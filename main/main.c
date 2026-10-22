@@ -47,7 +47,7 @@ void app_main(void) {
        vTaskDelay(pdMS_TO_TICKS(60));
 
        float distance = 0.01715 * diff;
-       if (distance > 100)
+       if (distance > 400)
 	   distance = 0;
 
        ESP_LOGI(TAG, "Distância %.2fcm", distance); 
