@@ -30,11 +30,11 @@ void IRAM_ATTR measure(void *arg) {
 
 void app_main(void) {
     //Setting GPIOs's modes
-    gpio_set_direction(PIN_TRIG, GPIO_MODE_OUTPUT);
-    gpio_set_direction(PIN_ECHO, GPIO_MODE_INPUT);
-    gpio_set_intr_type(PIN_ECHO, GPIO_INTR_ANYEDGE);
-    gpio_install_isr_service(0);
-    gpio_isr_handler_add(PIN_ECHO, measure, NULL);
+    gpio_set_direction(PIN_TRIG, GPIO_MODE_OUTPUT); // set Trig as output
+    gpio_set_direction(PIN_ECHO, GPIO_MODE_INPUT); // set Echo as input
+    gpio_set_intr_type(PIN_ECHO, GPIO_INTR_ANYEDGE); // set an interruption based on anyedge from echo (raising/falling)
+    gpio_install_isr_service(0); //install the isr service
+    gpio_isr_handler_add(PIN_ECHO, measure, NULL); // set the handler that will trigger the interruption
 
    while(1) {
        diff = 0;
