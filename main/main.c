@@ -11,6 +11,9 @@
 #define PIN_TRIG GPIO_NUM_27
 #define PIN_ECHO GPIO_NUM_26
 
+//defining MAX_DISTANCE
+#define MAX_DISTANCE 400
+
 //Initializing volatile variables for time operations
 static volatile int64_t before = 0; //time measured(us) on raising edge 
 static volatile int64_t after = 0; //time measured(us) on falling edge
@@ -47,7 +50,7 @@ void app_main(void) {
        vTaskDelay(pdMS_TO_TICKS(60));
 
        float distance = 0.01715 * diff;
-       if (distance > 400)
+       if (distance > MAX_DISTANCE)
 	   distance = 0;
 
        ESP_LOGI(TAG, "Distância %.2fcm", distance); 
